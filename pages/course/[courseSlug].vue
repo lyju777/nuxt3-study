@@ -44,21 +44,23 @@
       </div>
       <p class="q-mt-lg text-grey-8">{{ course?.content }}</p>
       <template #footer>
-        <q-btn
-          v-if="prevCourse"
-          :to="prevCourse.path"
-          label="이전강의"
-          color="primary"
-          unelevated
-        />
-        <q-space />
-        <q-btn
-          v-if="nextCourse"
-          :to="nextCourse.path"
-          label="다음강의"
-          color="primary"
-          unelevated
-        />
+        <ClientOnly>
+          <q-btn
+            v-if="prevCourse"
+            :to="prevCourse.path"
+            label="이전강의"
+            color="primary"
+            unelevated
+          />
+          <q-space />
+          <q-btn
+            v-if="nextCourse"
+            :to="nextCourse.path"
+            label="다음강의"
+            color="primary"
+            unelevated
+          />
+        </ClientOnly>
       </template>
     </AppCard>
   </div>
@@ -68,6 +70,12 @@
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
+definePageMeta({
+  key: (route) => route.fullPath,
+  title: "My home page",
+  pageType: "course",
+});
+console.log(`route.meta`, route.meta);
 </script>
 
 <style scoped></style>
