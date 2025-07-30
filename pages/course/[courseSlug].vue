@@ -42,9 +42,24 @@
           />
         </div>
       </div>
-      <p class="q-mt-lg text-grey-8">
-        {{ course?.content }}
-      </p>
+      <p class="q-mt-lg text-grey-8">{{ course?.content }}</p>
+      <template #footer>
+        <q-btn
+          v-if="prevCourse"
+          :to="prevCourse.path"
+          label="이전강의"
+          color="primary"
+          unelevated
+        />
+        <q-space />
+        <q-btn
+          v-if="nextCourse"
+          :to="nextCourse.path"
+          label="다음강의"
+          color="primary"
+          unelevated
+        />
+      </template>
     </AppCard>
   </div>
 </template>
@@ -52,7 +67,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
-const { course } = useCourse(courseSlug);
+const { course, prevCourse, nextCourse } = useCourse(courseSlug);
 </script>
 
 <style scoped></style>
