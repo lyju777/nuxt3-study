@@ -68,18 +68,18 @@
         <ClientOnly>
           <q-btn
             v-if="prevCourse"
-            :to="prevCourse.path"
             label="이전강의"
             color="primary"
             unelevated
+            @click="movePage(prevCourse.path)"
           />
           <q-space />
           <q-btn
             v-if="nextCourse"
-            :to="nextCourse.path"
             label="다음강의"
             color="primary"
             unelevated
+            @click="movePage(nextCourse.path)"
           />
         </ClientOnly>
       </template>
@@ -101,6 +101,10 @@ definePageMeta({
 
 const memo = ref("");
 const completed = ref(false);
+
+const movePage = async (path: string) => {
+  await navigateTo(path);
+};
 </script>
 
 <style scoped></style>
