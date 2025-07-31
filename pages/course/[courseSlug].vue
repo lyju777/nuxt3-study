@@ -96,7 +96,7 @@ if (!course) {
   throw createError({
     statusCode: 404,
     statusMessage: "Course not found",
-    fatal: true,
+    // fatal: true,
   });
 }
 
@@ -104,7 +104,7 @@ definePageMeta({
   key: (route) => route.fullPath,
   title: "My home page",
   pageType: "course",
-  keepalive: true,
+  // keepalive: true,
   alias: ["/lecture/courseSlug"],
 });
 
