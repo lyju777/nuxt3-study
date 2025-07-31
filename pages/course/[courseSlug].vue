@@ -92,13 +92,13 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
 
-if (!course) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: "Course not found",
-    // fatal: true,
-  });
-}
+// if (!course) {
+//   throw createError({
+//     statusCode: 404,
+//     statusMessage: "Course not found",
+//     // fatal: true,
+//   });
+// }
 
 definePageMeta({
   key: (route) => route.fullPath,
@@ -106,6 +106,18 @@ definePageMeta({
   pageType: "course",
   // keepalive: true,
   alias: ["/lecture/courseSlug"],
+
+  validate: (route) => {
+    const courseSlug = route.params.courseSlug as string;
+    const { course } = useCourse(courseSlug);
+    if (!course) {
+      return {
+        statusCode: 404,
+        statusMessage: "Course not found",
+      };
+    }
+    return true;
+  },
 });
 
 const memo = ref("");
