@@ -117,6 +117,7 @@ const movePage = async (path: string) => {
 
 const toggleCompleted = async () => {
   // $fetch("/api/error");
+  showError("Error Message");
   completed.value = !completed.value;
 };
 </script>
