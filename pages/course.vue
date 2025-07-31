@@ -23,7 +23,22 @@
         </q-card>
       </div>
       <div class="col">
-        <NuxtPage />
+        <NuxtErrorBoundary>
+          <NuxtPage />
+          <template #error="{ error }">
+            <div class="flex flex-center column q-py-xl">
+              <div class="text-h6">
+                {{ error }}
+              </div>
+              <q-btn
+                color="primary"
+                label="reset"
+                no-caps
+                @click="clearError({ redirect: '/' })"
+              />
+            </div>
+          </template>
+        </NuxtErrorBoundary>
       </div>
     </div>
   </q-page>
