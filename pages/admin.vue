@@ -1,10 +1,10 @@
 <template>
   <q-page padding>
     <div class="q-my-xl text-center">
-      <div class="text-h4">Admin</div>
-      <p class="q-mt-sm text-grey-8">
-        Vue & Nuxt Mastery Class 웹은 Nuxt3로 만들어졌습니다.
-      </p>
+      <PageTitle title="Admin" />
+      <PageDescription
+        description="Vue & Nuxt Mastery Class 웹은 Nuxt3로 만들어졌습니다."
+      />
       <div class="column">
         <RouterLink to="/">Router Link Home</RouterLink>
         <RouterLink to="https://www.naver.com">Router Link Naver</RouterLink>
