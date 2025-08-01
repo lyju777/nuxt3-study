@@ -43,7 +43,7 @@ module.exports = {
         useTabs: false,
         tabWidth: 2,
         trailingComma: "all",
-        printWidth: 120,
+        printWidth: 90,
         bracketSpacing: true,
         arrowParens: "always",
         endOfLine: "auto",
