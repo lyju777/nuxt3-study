@@ -115,4 +115,6 @@ const selectedLanguageName = computed(() => {
   return languages.value.find((language) => language.code === locale.value)
     ?.name;
 });
+
+watch(locale, (val) => (useCookie("locale").value = val));
 </script>
