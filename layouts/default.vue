@@ -91,9 +91,9 @@
   </q-layout>
 </template>
 <script setup lang="ts">
-const authUser = useAuthUser();
-const isAuthenticated = useAuthenticated();
-const { signOut } = useAuth();
+const authStore = useAuthStore();
+const { signOut } = authStore;
+const { user: authUser, isAuthenticated } = storeToRefs(authStore);
 const pageContainerStyle = computed(() => ({
   maxWidth: "1080px",
   margin: "0 auto",
