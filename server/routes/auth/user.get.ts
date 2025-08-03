@@ -1,15 +1,10 @@
 export default defineEventHandler(async (event) => {
-  const userJsonString = getCookie(event, "_user");
+  const user = event.context.user;
+  console.log("user", user);
 
-  console.log("userJsonString", userJsonString);
-
-  if (!userJsonString) {
-    return {
-      user: null,
-    };
+  if (!user) {
+    return { user: null };
   }
-
-  const user = JSON.parse(userJsonString);
 
   return { user };
 });
