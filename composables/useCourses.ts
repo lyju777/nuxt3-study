@@ -1,7 +1,7 @@
 import type { CourseWithPath } from "~/types/course";
 
 interface CoursesReturn {
-  courses: CourseWithPath[];
+  courses: Maybe<CourseWithPath[]>;
 }
 
 export const useCourses = async (): Promise<CoursesReturn> => {
@@ -14,6 +14,6 @@ export const useCourses = async (): Promise<CoursesReturn> => {
   }
 
   return {
-    courses: data.value as CourseWithPath[],
+    courses: data.value,
   };
 };

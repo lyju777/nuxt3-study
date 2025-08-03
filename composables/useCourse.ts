@@ -1,6 +1,8 @@
 import type { CourseReturn } from "~/types/course";
 
-export const useCourse = async (courseSlug: string): Promise<CourseReturn> => {
+export const useCourse = async (
+  courseSlug: string
+): Promise<Maybe<CourseReturn>> => {
   const { data, error } = await useFetch<CourseReturn>(
     `/api/courses/${courseSlug}`
   );
@@ -10,5 +12,5 @@ export const useCourse = async (courseSlug: string): Promise<CourseReturn> => {
       ...error.value,
     });
   }
-  return data.value as CourseReturn;
+  return data.value;
 };
