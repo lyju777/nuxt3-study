@@ -41,4 +41,8 @@ export default defineNuxtConfig({
       meta: [{ name: "description", content: "Nuxt 3 강의 입니다." }],
     },
   },
+  runtimeConfig: {
+    authCookieName: "___user",
+    jwtSecretKey: "superkey",
+  },
 });
