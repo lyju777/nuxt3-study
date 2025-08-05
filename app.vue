@@ -4,9 +4,15 @@
   </NuxtLayout>
 </template>
 <script setup lang="ts">
-// const nuxtApp = useNuxtApp();
+const title = ref("Nuxt 3!");
+const description = ref("Nuxt 3 강의 입니다.");
 
-// nuxtApp.provide(`hello`, (msg: string) => {
-//   console.log(msg + " from app.vue");
-// });
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogType: "website",
+  ogImage: "/img/og-image.png",
+});
 </script>

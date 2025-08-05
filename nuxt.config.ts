@@ -27,4 +27,11 @@ export default defineNuxtConfig({
       },
     ],
   },
+  ssr: true,
+  app: {
+    head: {
+      title: "Nuxt 3",
+      meta: [{ name: "description", content: "Nuxt 3 강의 입니다." }],
+    },
+  },
 });
