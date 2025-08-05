@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- <Head>
+      <Title>{{ title }}</Title>
+      <Meta name="description" :content="description" />
+    </Head> -->
     <AppCard>
       <template #header>
         <div class="text-h5 text-weight-medium">{{ course?.title }}</div>
@@ -92,6 +96,14 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = (await useCourse(courseSlug)) || {};
 
+// const title = computed(() => course?.title);
+// const description = computed(() => course?.content);
+
+useSeoMeta({
+  title: () => course?.title || "",
+  description: () => course?.content || "",
+});
+
 // if (!course) {
 //   throw createError({
 //     statusCode: 404,
@@ -131,7 +143,6 @@ const movePage = async (path: string) => {
 };
 
 const toggleCompleted = async () => {
-  // $fetch("/api/error");
   completed.value = !completed.value;
   throw createError("에러가 발생했습니다.");
 };
