@@ -37,6 +37,12 @@
           <q-btn label="increment" @click="counterStore.increment()" />
         </div>
       </div>
+
+      <div class="q-gutter-y-sm q-mt-md">
+        <div class="text-subtitle1 text-weight-bold">local vs session</div>
+        <q-input outlined v-model="localStoregeColor" />
+        <q-input outlined v-model="sessionStorageColor" />
+      </div>
     </div>
   </q-page>
 </template>
@@ -45,4 +51,7 @@
 const counter = useState<number>("counter", () => 1);
 const counterStore = useCounterStore();
 const { count, doubleCount } = storeToRefs(counterStore);
+
+const localStoregeColor = useLocalStorage("color-key", null);
+const sessionStorageColor = useSessionStorage("color-key", null);
 </script>
