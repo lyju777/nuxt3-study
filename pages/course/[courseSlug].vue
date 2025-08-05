@@ -117,7 +117,7 @@ definePageMeta({
   title: "My home page",
   pageType: "course",
   // keepalive: true,
-  alias: ["/lecture/courseSlug"],
+  alias: ["/lecture/:courseSlug"],
 
   // validate: (route) => {
   middleware: async (route) => {
