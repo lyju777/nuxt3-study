@@ -8,6 +8,7 @@
             stretch
             flat
             :label="$t('home')"
+            :key="locale"
             no-caps
             @click="() => navigate()"
           />
@@ -18,6 +19,7 @@
             stretch
             flat
             :label="$t('about')"
+            :key="locale"
             no-caps
             @click="() => navigate()"
           />
@@ -27,6 +29,7 @@
             stretch
             flat
             :label="$t('youtube')"
+            :key="locale"
             no-caps
             @click="() => navigate()"
           />
@@ -36,23 +39,22 @@
             stretch
             flat
             :label="$t('admin')"
+            :key="locale"
             no-caps
             @click="() => navigate()"
           />
         </NuxtLink>
         <q-separator dark vertical />
-        <q-btn-dropdown stretch flat no-caps :label="selectedLanguageName">
+        <q-btn-dropdown stretch flat no-caps label="English">
           <q-list padding dense>
-            <q-item
-              v-for="{ code, name } in languages"
-              :key="code"
-              v-close-popup
-              clickable
-              :active="code === $i18n.locale"
-              @click="$i18n.locale = code"
-            >
+            <q-item v-close-popup clickable @click="localePath('/', 'en')">
               <q-item-section>
-                <q-item-label>{{ name }}</q-item-label>
+                <q-item-label>English</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item v-close-popup clickable @click="switchLocalePath('ko')">
+              <q-item-section>
+                <q-item-label>한국어</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
@@ -68,6 +70,7 @@
             stretch
             flat
             :label="$t('login')"
+            :key="locale"
             no-caps
             @click="navigate()"
           />
@@ -77,6 +80,7 @@
           stretch
           flat
           :label="$t('logout')"
+          :key="locale"
           no-caps
           @click="signOut()"
         />
@@ -99,22 +103,7 @@ const pageContainerStyle = computed(() => ({
   margin: "0 auto",
 }));
 
-interface Language {
-  name: string;
-  code: "en" | "ko";
-}
-
-const languages = ref<Language[]>([
-  { name: "English", code: "en" },
-  { name: "한국어", code: "ko" },
-]);
-
 const { locale } = useI18n();
-
-const selectedLanguageName = computed(() => {
-  return languages.value.find((language) => language.code === locale.value)
-    ?.name;
-});
-
-watch(locale, (val) => (useCookie("locale").value = val));
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 </script>

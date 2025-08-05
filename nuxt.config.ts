@@ -9,7 +9,13 @@ export default defineNuxtConfig({
     "nuxt-quasar-ui",
     "@pinia/nuxt",
     "pinia-plugin-persistedstate/nuxt",
+    "@nuxtjs/i18n",
   ],
+  i18n: {
+    locales: ["en", "ko"],
+    defaultLocale: "ko",
+    vueI18n: "./i18n.config.ts",
+  },
   quasar: {
     plugins: ["Notify"],
     config: {
@@ -20,12 +26,12 @@ export default defineNuxtConfig({
   },
 
   imports: {
-    presets: [
-      {
-        from: "vue-i18n",
-        imports: ["useI18n"],
-      },
-    ],
+    // presets: [
+    //   {
+    //     from: "vue-i18n",
+    //     imports: ["useI18n"],
+    //   },
+    // ],
   },
   ssr: true,
   app: {
